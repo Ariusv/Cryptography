@@ -1,0 +1,129 @@
+﻿<Window x:Class="TabMenu.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:TabMenu"
+        mc:Ignorable="d" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" AllowDrop="True" WindowStyle="None">
+    <StackPanel Background="WhiteSmoke">
+        <Grid Height="40">
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
+                <Button x:Name="OpenButton" Content="Open" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Bottom" Margin="0,0,0,4" MouseMove="OpenButton_MouseMove" MouseLeave="OpenButton_MouseLeave" Click="OpenButton_Click"/>
+                <Button x:Name="SaveButton" Content="Save" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" MouseMove="SaveButton_MouseMove" MouseLeave="SaveButton_MouseLeave" Click="SaveButton_Click"/>
+
+                <Button x:Name="PiconExitButton" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" MouseMove="ExitButton_MouseMove" MouseLeave="ExitButton_MouseLeave" Click="ExitButton_Click" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                    <materialDesign:PackIcon x:Name="Picon" Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25" />
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid Height="100">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
+                <Button Uid="0" Width="150" Content="Caeser" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/>
+                <Button Uid="1" Width="150" Content="Frequency" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/>
+                <Button Uid="2" Width="150" Content="Vigenère" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/>
+                <Button Uid="3" Width="150" Content="Huffman" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/>
+                <Button Uid="4" Width="150" Content="ElHamal" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="Button_Click"/>
+            </StackPanel>
+            <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" Margin="10 0"/>
+        </Grid>
+        <Grid x:Name="GridMain" Height="462" Background="AliceBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Left">
+                <StackPanel  Orientation="Horizontal" Height="46">
+                    <StackPanel x:Name="KeyPanel" Orientation="Horizontal">
+                    <Button  Background="Transparent" Height="Auto" BorderBrush="{x:Null}">
+                        <materialDesign:PackIcon x:Name="KeyIcon" Kind="Key" Foreground="Black"  Width="25" Height="25" />
+                    </Button>
+                    <TextBox x:Name="Key1" BorderBrush="{x:Null}" FontSize="18" Background="White" Width="61" MouseMove="KeyButton_MouseMove" MouseLeave="KeyButton_MouseLeave">1</TextBox>
+                    </StackPanel>
+                    <Button x:Name="EnCodeButton" BorderBrush="{x:Null}" Background="Transparent" Height="Auto" Click="BCE" MouseMove="EnCodeButton_MouseMove" MouseLeave="EnCodeButton_MouseLeave">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon x:Name="EnCodeIcon" Kind="Archive" Foreground="Black"  Width="25" Height="25" />
+                            <Label Foreground="Black">Encode</Label>
+                        </StackPanel>
+
+
+                    </Button>
+                    <Button x:Name="DeCodeButton" Background="Transparent" BorderBrush="{x:Null}" Height="Auto" Click="BCD" MouseMove="DeCodeButton_MouseMove" MouseLeave="DeCodeButton_MouseLeave">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon x:Name="DeCodeIcon" Kind="ArrowCompress" Foreground="Black"  Width="25" Height="25" />
+                            <Label Foreground="Black">Decode</Label>
+                        </StackPanel>
+
+
+                    </Button>
+                    <Button x:Name="CodeTableButton" Background="Transparent" BorderBrush="{x:Null}" Height="Auto" Click="CodeTableButton_Click"  MouseMove="CodeTableButton_MouseMove"  MouseLeave="CodeTableButton_MouseLeave" Visibility="Hidden">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon x:Name="CodeTableIcon" Kind="Table" Foreground="Black"  Width="25" Height="25" />
+                            <Label Foreground="Black">CodeTable</Label>
+                        </StackPanel>
+
+
+                    </Button>
+                    <StackPanel x:Name="gPanel" Orientation="Horizontal" Visibility="Hidden">
+                        <Button  Background="Transparent" Height="Auto" BorderBrush="{x:Null}">
+                            <Label  Foreground="Black"  Width="25" Height="40" >G
+                            </Label>
+                        </Button>
+                        <TextBox x:Name="gKey1" BorderBrush="{x:Null}" FontSize="18" Background="White" Width="133">1</TextBox>
+                    </StackPanel>
+                    <StackPanel x:Name="XPanel" Orientation="Horizontal" Visibility="Hidden">
+                        <Button  Background="Transparent" Height="Auto" BorderBrush="{x:Null}">
+                            <Label  Foreground="Black"  Width="25" Height="40" >X
+                            </Label>
+                        </Button>
+                        <TextBox x:Name="XKey1" BorderBrush="{x:Null}" FontSize="18" Background="White" Width="128">1</TextBox>
+                    </StackPanel>
+                    <StackPanel x:Name="YPanel" Orientation="Horizontal" Visibility="Hidden">
+                        <Button  Background="Transparent" Height="Auto" BorderBrush="{x:Null}">
+                            <Label  Foreground="Black"  Width="25" Height="40" >Y
+                            </Label>
+                        </Button>
+                        <TextBox x:Name="YKey1" BorderBrush="{x:Null}" FontSize="18" Background="White" Width="128">1</TextBox>
+                    </StackPanel>
+
+
+                </StackPanel>
+                <RichTextBox x:Name="EnCodeBox" BorderBrush="{x:Null}" Margin="0,10,0,0" Height="169"/>
+            </StackPanel>
+            <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Left">
+                <StackPanel  Orientation="Horizontal" Height="56">
+                    <Button x:Name="ArrowButton" BorderBrush="{x:Null}" Background="Transparent" Height="Auto" Click="ArrowButton_Click" MouseMove="ArrowButton_MouseMove" MouseLeave="ArrowButton_MouseLeave">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon x:Name="ArrowIcon" Kind="RayStartArrow" Foreground="Black"  Width="25" Height="25" />
+                            <Label Foreground="Black">Exchange</Label>
+                        </StackPanel>
+
+
+                    </Button>
+                    <StackPanel x:Name="ReplacePanel" Orientation="Horizontal" Visibility="Hidden">
+                        <Button x:Name="ReplaceButton" BorderBrush="{x:Null}" Background="Transparent" Height="Auto" Click="ReplaceButton_Click" MouseMove="ReplaceButton_MouseMove"  MouseLeave="ReplaceButton_MouseLeave" >
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon x:Name="ReplaceIcon" Kind="MessageReplyText" Foreground="Black"  Width="25" Height="25" />
+                                <Label Foreground="Black">Replace</Label>
+                            </StackPanel>
+
+
+                        </Button>
+                        <TextBox x:Name="ReplaceFromBox" BorderBrush="{x:Null}" FontSize="18" Background="White" Width="61" Margin="0,10" ></TextBox>
+                        <Label Foreground="Black" FontSize="18
+                               " HorizontalAlignment="Center" VerticalAlignment="Center" Width="38" Margin="0,10">To</Label>
+                        <TextBox x:Name="ReplaceToBox" BorderBrush="{x:Null}" FontSize="18" Background="White" Width="61" Margin="0,10" ></TextBox>
+                    </StackPanel>
+                </StackPanel>
+
+                <RichTextBox x:Name="DeCodeBox" BorderBrush="{x:Null}" Margin="0,10,0,0" Height="168" />
+            </StackPanel>
+
+        </Grid>
+    </StackPanel>
+</Window>
